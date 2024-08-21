@@ -1,0 +1,5 @@
+video {
+    /* can't use display none or video won't load correctly */
+    visibility: hidden;
+    position: absolute;
+}
