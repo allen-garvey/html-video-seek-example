@@ -1,5 +1,5 @@
 const canvas = document.getElementById('canvas');
-const context = canvas.getContext("2d");
+const context = canvas.getContext('2d');
 const video = document.getElementById('video');
 const fileInput = document.getElementById('file_picker');
 const seeker = document.getElementById('seek');
@@ -9,16 +9,16 @@ const drawFrame = () => {
     context.drawImage(video, 0, 0);
 };
 
-video.addEventListener("loadedmetadata", () => {
+video.addEventListener('loadedmetadata', () => {
     seeker.disabled = false;
     seeker.value = 0;
     seeker.max = video.duration;
 });
 
-video.addEventListener("canplaythrough", () => {
+video.addEventListener('canplaythrough', () => {
     if (videoLoaded) {
         return;
-      }
+    }
     console.log('data loaded');
     videoLoaded = true;
     canvas.height = video.videoHeight;
@@ -29,19 +29,17 @@ video.addEventListener("canplaythrough", () => {
     }, 1000);
 });
 
-
-seeker.addEventListener("change", () => {
+seeker.addEventListener('change', () => {
     if (!videoLoaded) {
-      return;
+        return;
     }
     video.currentTime = seeker.value;
     drawFrame();
 });
 
-
-fileInput.addEventListener("change", () => {
+fileInput.addEventListener('change', () => {
     if (fileInput.files.length < 1) {
-      return;
+        return;
     }
     videoLoaded = false;
     const file = fileInput.files[0];
