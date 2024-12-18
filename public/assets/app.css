@@ -3,3 +3,14 @@ video {
     visibility: hidden;
     position: absolute;
 }
+
+@media (prefers-color-scheme: dark) {
+    body {
+        color: #fff;
+        background-color: #000;
+    }
+
+    input {
+        color-scheme: dark;
+    }
+}
