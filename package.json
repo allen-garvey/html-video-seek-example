@@ -1,0 +1,12 @@
+{
+  "name": "html-video-seek-example",
+  "version": "1.0.0",
+  "description": "An example project for loading a video and rendering a frame to a canvas, with an adjustable seek time.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "php -S localhost:4000 -t public/"
+  },
+  "author": "",
+  "license": "MIT"
+}
