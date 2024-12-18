@@ -10,6 +10,7 @@ const drawFrame = () => {
 };
 
 video.addEventListener('loadedmetadata', () => {
+    console.log('metadata loaded');
     seeker.disabled = false;
     seeker.value = 0;
     seeker.max = video.duration;
@@ -19,14 +20,16 @@ video.addEventListener('canplaythrough', () => {
     if (videoLoaded) {
         return;
     }
-    console.log('data loaded');
+    console.log('canplaythrough');
+
     videoLoaded = true;
     canvas.height = video.videoHeight;
     canvas.width = video.videoWidth;
+    video.currentTime = 0;
+});
 
-    setTimeout(() => {
-        drawFrame();
-    }, 1000);
+video.addEventListener('seeked', () => {
+    drawFrame();
 });
 
 seeker.addEventListener('change', () => {
@@ -34,7 +37,6 @@ seeker.addEventListener('change', () => {
         return;
     }
     video.currentTime = seeker.value;
-    drawFrame();
 });
 
 fileInput.addEventListener('change', () => {
@@ -43,6 +45,7 @@ fileInput.addEventListener('change', () => {
     }
     videoLoaded = false;
     const file = fileInput.files[0];
+    console.log(file);
 
     video.src = URL.createObjectURL(file);
     video.load();
